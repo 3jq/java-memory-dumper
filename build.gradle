@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'dev.sl33py'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                'Implementation-Version': version,
+                'Main-Class': 'dev.sl33py.jmd.Main'
+    }
+
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+    version = ""
+}
